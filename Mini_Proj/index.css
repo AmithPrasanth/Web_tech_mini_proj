@@ -1,0 +1,260 @@
+/* Navbar styles and hover styles starts*/
+.navbar{
+    
+    background-color: white;
+    font-family: 'Arbutus Slab';
+    
+  }
+  .nav-link{
+    font-size: 16px;
+  }
+
+  .navbar {
+    position: relative;
+    transition: border-bottom-color 0.3s ease-in-out;
+  }
+
+  .navbar:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #023702;
+    /* transform: scaleX(0); */
+    /* transition: transform 0.3s ease-in-out; */
+  }
+
+  .navbar:hover {
+    border-bottom-color: #4ec24e;
+  }
+
+  .navbar:hover:before {
+    transform: scaleX(1);
+  }
+/* Navbar styles and hover styles start*/
+
+
+
+/* Brand or logo (image) styles and hover styles start*/
+  .logo-img {
+      transition: transform 0.3s ease-in-out;
+    }
+  
+  .logo-img:hover {
+  transform: scale(1.1);
+  border: 2px solid #000;
+  animation: border-animation 2s infinite;
+  }
+
+  @keyframes border-animation {
+  0% {
+      border-color: #b3ffb3;
+  }
+  25% {
+      border-color: #66ff66;
+  }
+  50% {
+      border-color:#00cc00 ;
+  }
+  75% {
+      border-color:#006600 ;
+  }
+  100% {
+      border-color:#001a00 ;
+  }
+  }
+/* Brand or logo (image) styles and hover styles end*/
+
+
+
+/* Navbar list (Home, About, Vision, Contact) styles and hover starts*/
+  .navbar-nav {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .nav-item {
+    display: inline-block;
+    margin-right: 15px;
+    position: relative;
+    padding-top: 12px;
+    font-size:20px;
+  }
+  
+  .nav-link {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #000;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .nav-link:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: width 0.5s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    transform: scale(1.1);
+    font-weight: bold;
+  }
+  
+  .nav-link:hover:before {
+    width: 100%;
+    animation: underline 0.6s linear;
+  }
+  
+  @keyframes underline {
+    0% {
+      left: 0;
+      width: 0;
+    }
+    25% {
+      left: 0;
+      width: 100%;
+    }
+    50% {
+      left: 100%;
+      width: 0;
+    }
+    75% {
+      left: 0;
+      width: 100%;
+    }
+    100% {
+      left: 0;
+      width: 100%;
+    }
+  }
+/* Navbar list (Home, About, Vision, Contact) styles and hover starts*/
+
+.dropdown nav-item{
+    float: right;
+}
+    
+
+
+
+/* User profile or dropdown styles and hover styles starts */
+  .fa-regular{
+    
+    color: white;
+    font-size: 20px;
+    padding: 5px;
+    background-color: black;
+  }
+
+  .dropdown-menu.dropdown-menu-center {
+    left: 40% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .dropdown .btn:hover {
+    transform: scale(1.1);
+    }
+
+  .dropdown-item{
+    font-family: 'Arbutus Slab';
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown-item:hover {
+    transform: scale(1.1);
+  }
+
+  .dropdown-divider {
+    border: none;
+    height: 2px;
+    background-color: #000;
+    margin: 0.5rem 0;
+    opacity: 0.5;
+  }
+/* User profile or dropdown styles and hover styles starts */  
+
+
+
+/* Media query styles for 576 px size user window starts */  
+  @media (max-width: 576px) {
+    .nav-item{
+        padding-left: 10%;
+    }
+
+    .dropdown{
+        padding-left: 8%;
+    }
+    
+    .dropdown-menu.dropdown-menu-center {
+      left: 30% !important;
+      right: 0 !important;
+      transform: translateX(0) !important;
+    }
+  }
+/* Media query styles for 576 px size user window ends */
+
+
+
+/* Existing styles remain unchanged */
+
+/* Additions for color themes, shadows, and font sizes */
+/* ... (Previous styles) */
+
+/* New styles for Add Course, Search Bar, and Enroll Me button */
+#add-list {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #4ec24e; /* Green border */
+  border-radius: 5px;
+  background-color: #fff; /* White background */
+  margin-right: 10px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+#add-list:focus {
+  outline: none;
+  border-color: #4ec24e; /* Green border on focus */
+}
+
+#submit-item {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #4ec24e; /* Green background */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#submit-item:hover {
+  background-color: #45a545; /* Darker green on hover */
+}
+
+.form-control {
+  border: 1px solid #4ec24e; /* Green border for the search input */
+  border-radius: 5px;
+}
+
+.search-button {
+  background-color: #4ec24e; /* Green background for the search button */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.search-button:hover {
+  background-color: #45a545; /* Darker green on hover */
+}
+
+/* Add more styles as needed */
