@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moodle2.0</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav bar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet"  href="nav.css">
+    <link href='https://fonts.googleapis.com/css?family=Arbutus Slab' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="nav.js"></script>
+    <script src="https://kit.fontawesome.com/4d548a4e76.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="right_side_box.css">
+    <link rel="stylesheet" href="left_side_box.css">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-sm p-3 fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="logo.png" alt="HK Logo" class="logo-img" style="width:60px;"> 
+          </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav">
+                <li class="nav-item ps-5">
+                  <a class="nav-link" href="#">Courses</a>
+                </li>
+                <li class="nav-item ps-5">
+                  <a class="nav-link" href="announcements.html">Announcements</a>
+                </li>
+                <li class="nav-item ps-5">
+                  <a class="nav-link" href="#">Library</a>
+                </li>
+                <li class="nav-item ps-5">
+                    <a class="nav-link" href="events.html">Events</a>
+                  </li>
+              </ul>
+              <!-- <form class="d-flex ms-auto nav-item search-form">
+                <div class="search-wrapper">
+                  <input class="form-control me-2 p-1 ps-2" type="text" placeholder="Search">
+                  <button type="submit" class="search-button">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </form> -->
+              
+            <div class="dropdown nav-item">
+                <button type="button" class="btn dropdown-toggle border-0" data-bs-toggle="dropdown">
+                    <i class="fa-regular fa-user border border-3 border-dark rounded-circle"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-center">
+                  <li><a class="dropdown-item" href="#">Register</a></li>
+                  <li><a class="dropdown-item" href="#">About</a></li>
+                  <li><a class="dropdown-item" href="#">Contact</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Sign in</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        
+        
+    </nav>
+
+    <div class="right_side_box">
+        <div class="cal" ng-app="calApp" ng-controller="calCtrl">
+          
+          <div class="cal-heading">Upcoming Events</div>
+          <div class="cal-event" ng-repeat="event in getEvents() ">
+            <div class="cal-event-tile">
+              <div class="cal-event-tile-date">{{ event.date | date:'d' }}</div>
+              <div class="cal-event-tile-month">{{ event.date | date:'MMM' }}</div>
+            </div>
+            <div class="cal-event-desc">
+              <div class="cal-event-title">
+                {{ event.title }} 
+              </div>
+              <div class="cal-event-time">
+                <icon>&#xf017;</icon> {{ event.date | date:'h:mm a, EEE d MMM' }}
+              </div>
+              <div class="cal-event-location">
+                <icon>&#xf041;</icon>
+                <div class="cal-event-location-content">
+                  {{event.location}}  
+                 </div>
+              </div>
+             
+            </div> 
+          </div>
+          
+          <div class="cal-hidden-events" ng-click="showHidden()" ng-if="hiddenEvents() > 0">
+            {{ hiddenEvents()}} Event<span ng-if="hiddenEvents() >1">s</span> Hidden
+          </div>
+          <div ng-if="hiddenEvents() == 0 && events.length > 3" class="cal-hidden-events" ng-click="hideEvents()">
+            Hide Events
+          </div>
+        </div>
+
+        
+        </div>
+      
+        <div class="left_side_box">
+            
+        <form class="d-flex ms-auto nav-item search-form">
+            <div class="search-wrapper">
+              <input class="form-control me-2 p-1 ps-2" type="text" placeholder="Search">
+              <button type="submit" class="search-button">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </form>
+
+      
+
+        <div class="container">
+            <div class="well">
+              <div class="row">
+                <div class="col-md-6">
+                  <button onclick="toggleAddCourseForm()">Add course</button>
+                
+                  <div id="add-course-form" style="display: none;">
+                    <input id="add-list" type="text" placeholder="Enter course name" />
+                    <button type="button" id="submit-item" onclick="addItemFromInput()">Enroll me</button>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+          
+
+        
+
+
+          <div class="container">
+            <div class="row justify-content-center" id="course-container"></div>
+          </div>
+          <div class="container">
+              <div class="row justify-content-center">
+                  <div class="col-lg-4 col-md-6 col-sm-12">
+                      <div class="card">
+                          <div class="overlay"></div>
+                          <div class="content">
+                              <h4><a class="card-1" href="course_info.html">UI DESIGN COURSE</a></h4>
+                              <h6>3 Hrs | 13 Sections</h6>
+                          </div>
+                          <div class="fav">
+                              <i class="far fa-heart"></i>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 col-sm-12">
+                      <div class="card">
+                          <div class="overlay"></div>
+                          <div class="content">
+                              <h4>UI DESIGN COURSE</h4>
+                              <h6>3 Hrs | 13 Sections</h6>
+                          </div>
+                          <div class="fav">
+                              <i class="far fa-heart"></i>
+                          </div>
+                      </div>
+                  </div>
+               
+                  <div class="col-lg-4 col-md-6 col-sm-12">
+                      <div class="card">
+                          <div class="overlay"></div>
+                          <div class="content">
+                              <h4>UI DESIGN COURSE</h4>
+                              <h6>3 Hrs | 13 Sections</h6>
+                          </div>
+                          <div class="fav">
+                              <i class="far fa-heart"></i>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card">
+                        <div class="overlay"></div>
+                        <div class="content">
+                            <h4>UI DESIGN COURSE</h4>
+                            <h6>3 Hrs | 13 Sections</h6>
+                        </div>
+                        <div class="fav">
+                            <i class="far fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                  <div class="card">
+                      <div class="overlay"></div>
+                      <div class="content">
+                          <h4>UI DESIGN COURSE</h4>
+                          <h6>3 Hrs | 13 Sections</h6>
+                      </div>
+                      <div class="fav">
+                          <i class="far fa-heart"></i>
+                      </div>
+                  </div>
+              </div>
+                  <div class="col-lg-4 col-md-6 col-sm-12">
+                      <div class="card">
+                          <div class="overlay"></div>
+                          <div class="content">
+                              <h4>UI DESIGN COURSE</h4>
+                              <h6>3 Hrs | 13 Sections</h6>
+                          </div>
+                          <div class="fav">
+                              <i class="far fa-heart"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-animate.min.js"></script>
+
+        <script >
+            
+var calApp;
+calApp = angular.module('calApp', ['ngAnimate'])
+calApp.controller('calCtrl',  function($scope, $sce) {
+  
+  $scope.eventsVisible = 3; // How many events should be shown?
+  
+  $scope.events = [
+    {
+      title    : "Australia Day Service",
+      date     : 1453786245352,
+      location : "Corner Cross and Hocking St West Footscray",
+    },
+    {
+      title    : "BBQ in the park",
+      date     : 1456813856559,
+      location : "16 Ferdinando Gardens Hampton",
+    },
+    {
+      title    : "Good Friday",
+      date     : 1459290634807,
+      location : "Flinders St, Melbourne",
+    },
+    {
+      title    : "Family Day",
+      date     : 1459290634807,
+      location : "Collins St, Melbourne",
+    },
+    {
+      title    : "Concert In Altona",
+      date     : 1461990642447,
+      location : "Altona Beach",
+    }
+  ];
+  
+  $scope.getMap = function(event){
+    // Creates a Google Map URL
+    return "https://maps.google.com/?q=" + event.location;
+  };
+    
+ $scope.getEvents = function(){
+  // Gets x number of events , using scope.eventsVisible 
+  // to determine how many events to show
+   var events = [];
+   for(x = 0; x<$scope.eventsVisible; x++){
+     events.push($scope.events[x]);
+   }
+   return events;
+ } 
+ 
+ $scope.hiddenEvents = function(){
+   // Calculates how many events are hidden
+   var remaining;
+   if($scope.events.length - $scope.eventsVisible > 0){
+     remaining = $scope.events.length - $scope.eventsVisible;
+   } else{
+     remaining = 0;
+   }
+   
+   return remaining;
+ }
+ 
+ $scope.showHidden = function(){
+   // Show hidden events
+   $scope.eventsVisible = $scope.events.length;
+ }
+ $scope.hideEvents = function(){
+   // Hide events
+   $scope.eventsVisible = 3;
+ } 
+ 
+  
+});
+
+var itemArray = [];
+  var currCount = 0; // current array position
+  var addBox = document.getElementById("add-list"); // input box
+  var theList = document.getElementById("the-list");
+  var numOfItems = document.getElementById("num-items");
+  var entryCount = 0;
+  var noEntries = document.getElementById("header-entries");
+
+  // allows the enter key to activate submit button to add the elements
+  addBox.addEventListener("keyup", function (event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+      addItemFromInput();
+    }
+  });
+
+  function displayCount() {
+    if (entryCount === 0) {
+      numOfItems.innerHTML = "No items currently saved.";
+    } else {
+      numOfItems.innerHTML = "Number of items: " + entryCount;
+    }
+  }
+
+  function deleteItem(num) {
+    itemArray.splice(num, 1);
+    entryCount--;
+    currCount = 0;
+    theList.innerHTML = "";
+    displayItems();
+    displayCount();
+  }
+
+  function displayItems() {
+    while (currCount < itemArray.length) {
+      theList.innerHTML +=
+        '<li>' +
+        itemArray[currCount] +
+        ' <input type="button" value="delete" onclick="deleteItem(' + currCount + ')"></li>';
+      currCount++;
+    }
+  }
+
+  function addItem() {
+    var theObject = addBox.value;
+
+    if (theObject.length < 1) {
+      alert("Entry cannot be empty. Please try again");
+    } else {
+      itemArray.push(theObject);
+      addBox.value = "";
+      entryCount++;
+      displayItems(); // display items currently saved in array
+      displayCount(); // call update to increased saved items count
+    }
+  }
+
+  function addItemFromInput() {
+    var courseName = addBox.value.trim();
+
+    if (courseName.length > 0) {
+      createCourseCard(courseName);
+      addItem();
+    }
+  }
+
+  function createCourseCard(courseName) {
+    var courseContainer = document.getElementById("course-container");
+
+    var newCard = document.createElement("div");
+    newCard.className = "col-lg-4 col-md-6 col-sm-12";
+    newCard.innerHTML = `
+      <div class="card">
+        <div class="overlay"></div>
+        <div class="content">
+          <h4>${courseName}</h4>
+          <h6>3 Hrs | 13 Sections</h6>
+					 <button onclick="deleteCourseCard(this)">Delete</button>
+        </div>
+        <div class="fav">
+          <i class="far fa-heart"></i>
+        </div>
+      </div>
+    `;
+
+    courseContainer.appendChild(newCard);
+  }
+// Add this function to the script
+function deleteCourseCard(button) {
+  var card = button.closest(".col-lg-4");
+  var courseName = card.querySelector("h4").innerText.trim();
+
+  // Remove the course from the array
+  var index = itemArray.indexOf(courseName);
+  if (index !== -1) {
+    itemArray.splice(index, 1);
+  }
+
+  // Remove the card from the DOM
+  card.remove();
+
+  // Update the displayed items and count
+  entryCount--;
+  currCount = 0;
+  theList.innerHTML = "";
+  displayItems();
+  displayCount();
+}
+
+
+
+function toggleAddCourseForm() {
+    var addCourseForm = document.getElementById("add-course-form");
+    addCourseForm.style.display = addCourseForm.style.display === "none" ? "block" : "none";
+  }
+
+
+        </script>
+</body>
+
+
+</html>

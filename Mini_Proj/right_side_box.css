@@ -1,0 +1,166 @@
+
+
+.right_side_box {
+  
+    float: right;
+   
+  
+
+  /* display:flex;
+  justify-content:right; */
+  align-items:flex-start;
+  font:16px lato;
+  color:#333;
+  padding:2em;
+  overflow:hidden;
+  
+  &:before {
+    position: absolute;
+    z-index: -1;
+   
+  background-size:cover;
+    filter: blur(5px);
+  -webkit-filter: blur(5px);
+    content:"";
+    width:106%;
+    height:106%;
+    top:-3%;
+    left:-3%;
+  }
+}
+icon {
+  font-family:fontawesome;
+}
+
+
+
+.cal {
+  background:rgba(107, 108, 109, 0.7);
+  padding:1em;
+  display:inline-block;
+  width:22em; 
+  box-shadow:0 2px 0 rgba(0,0,0,.1), 0 2px 8px rgba(0,0,0,.1);
+  margin-top:50px;
+  transform:.3s;
+  .cal-heading {
+    font-size:1.1em;
+    color:rgb(71, 69, 69);
+    opacity:.8;
+    margin-top:-50px;
+    text-shadow:0 0px 0px rgba(0,0,0,.5);
+  }
+ 
+  .cal-event {
+    padding:1em 0;
+    border-bottom:1px solid white;
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    
+ 
+    .cal-event-tile {
+      background:#3d3e40;
+      color:white;
+      text-align:center;
+      width:3em;
+      height:3em;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+      padding:.2em;
+      margin-right:1em;
+      flex-shrink:0;
+      border-radius:.5em;
+      box-shadow:0 2px 5px rgba(0,0,0,.1);
+      
+      .cal-event-tile-date, .cal-event-tile-month {
+        width:100%;
+        line-height:1em;
+        margin:0;
+        padding:0;
+      }
+      .cal-event-tile-date {
+        font-size:1.5em;
+      }
+      .cal-event-tile-month {
+        font-size:1.1em;
+      }
+    }
+    
+  
+    
+      
+    .cal-event-title {
+      font-size:1.2em;
+      margin:0.5em 0;
+      color:#222324;
+    }
+    .cal-event-map {
+      display:inline-block;
+      color:#4f5153;
+      border:1px solid #5b5d5f;
+      text-align:center;
+      padding:.1em 1em;
+      border-radius:.2em;
+      text-decoration:none;
+      margin-top:.5em;
+       
+      &:hover {
+        background-color:#686d72;
+        color:white;
+        border:1px solid #4183d7;
+      }
+    }
+    .cal-event-location, .cal-event-time {
+      font-weight:500;
+      margin:.2em 0;
+      display:flex;
+      justify-content:flex-start;
+      align-items:center;
+      color:#777;
+        
+      icon {
+        width:1.2em;
+        display:inline-block;
+        text-align:center;
+        margin-right:.5em;
+      }
+    }
+    
+   
+  }
+  .cal-hidden-events {
+    width:100%;
+    text-align:center;
+    margin:.5em 0;
+    color:#4183d7;
+    cursor:pointer;
+    
+    &:hover {
+      color:darken(#4183d7,20%);
+    }
+  }
+      
+}
+
+
+.cal-event.ng-enter {
+  transition:0.3s linear all;
+  opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.cal-event.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+.cal-event.ng-leave {
+  transition:0.4s linear all;
+  opacity:1;
+  max-height:200px;
+}
+.cal-event.ng-leave.ng-leave-active {
+  opacity:0;
+  max-height:0;
+}
