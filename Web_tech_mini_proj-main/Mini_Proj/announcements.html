@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet"  href="nav.css">
+    <link href='https://fonts.googleapis.com/css?family=Arbutus Slab' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="nav.js"></script>
+    <script src="https://kit.fontawesome.com/4d548a4e76.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="right_side_box.css">
+    <link rel="stylesheet" href="left_side_box.css">
+<style>
+      body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .announcement-container {
+            width: 100%;
+            margin: 20px 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .announcement-card {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #857171;
+            background-color: rgba(187, 187, 207, 0.501);
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pinned {
+            background-color: #2ecc71;
+            color: #fff;
+            order: -1; /* Move the pinned announcement to the top */
+        }
+
+        .announcement-card p.timestamp {
+            align-self: flex-end; /* Align timestamp to bottom right corner */
+            font-size: 10px; /* Adjusted font size */
+            margin-top: auto; /* Push timestamp to the bottom */
+        }
+
+        .announcement-line {
+            width: 4px;
+            height: 100%;
+            background-color: #3498db; /* Adjust the color as needed */
+            border-radius: 8px 0 0 8px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm p-3 fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="logo.png" alt="HK Logo" class="logo-img" style="width:60px;"> 
+          </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+              <ul class="navbar-nav">
+                <li class="nav-item ps-5">
+                  <a class="nav-link" href="index.html">Courses</a>
+                </li>
+                <li class="nav-item ps-5">
+                  <a class="nav-link" href="announcements.html">Announcements</a>
+                </li>
+                <li class="nav-item ps-5">
+                  <a class="nav-link" href="library.html">Library</a>
+                </li>
+                <li class="nav-item ps-5">
+                    <a class="nav-link" href="events.html">Events</a>
+                  </li>
+              </ul>
+            <div class="dropdown nav-item">
+                <button type="button" class="btn dropdown-toggle border-0" data-bs-toggle="dropdown">
+                    <i class="fa-regular fa-user border border-3 border-dark rounded-circle"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-center">
+                  <li><a class="dropdown-item" href="#">About</a></li>
+                  <li><a class="dropdown-item" href="#">Contact</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Log out</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+    </nav>
+
+<div class="announcement-container">
+    <div class="announcement-card" id="announcement1">
+        <div class="announcement-line"></div>
+        <h3>John Doe</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ut augue eu mi varius congue.</p>
+        <p class="timestamp">Posted on: <span id="timestamp1"></span></p>
+    </div>
+
+    <div class="announcement-card" id="announcement2">
+        <div class="announcement-line"></div>
+        <h3>Jane Smith</h3>
+        <p>Integer eget ex vitae sem consequat tristique non id massa. Sed vel lectus nec nulla blandit.</p>
+        <p class="timestamp">Posted on: <span id="timestamp2"></span></p>
+    </div>
+</div>
+
+<script>
+    function getCurrentTimestamp() {
+        var date = new Date();
+        return date.toISOString().slice(0, 19).replace("T", " ");
+    }
+    
+    function pinAnnouncement(announcementId) {
+        var announcement = document.getElementById(announcementId);
+        var timestampElementId = "timestamp" + announcementId.slice(-1);
+        var timestampElement = document.getElementById(timestampElementId);
+
+        if (announcement && timestampElement) {
+            announcement.classList.add("pinned"); // Apply the "pinned" class to the announcement
+            timestampElement.innerText = "Pinned on: " + getCurrentTimestamp();
+        }
+    }
+</script>
+</body>
+</html>
