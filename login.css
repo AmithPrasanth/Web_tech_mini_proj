@@ -40,7 +40,13 @@ body {
     display: none;
   }
   
-  #toggleForm {
+  #toggleFormlogin {
+    text-align: center;
+    cursor: pointer;
+    color: #007bff;
+  }
+  
+  #toggleFormsignup {
     text-align: center;
     cursor: pointer;
     color: #007bff;

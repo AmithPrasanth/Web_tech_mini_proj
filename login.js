@@ -1,12 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const toggleForm = document.getElementById('toggleForm');
+    const toggleFormlogin = document.getElementById('toggleFormlogin');
+    const toggleFormsignup = document.getElementById('toggleFormsignup');
     const loginForm = document.getElementById('loginForm');
     const signupForm = document.getElementById('signupForm');
   
-    toggleForm.addEventListener('click', function() {
+    toggleFormlogin.addEventListener('click', function() {
       loginForm.classList.toggle('hidden');
       signupForm.classList.toggle('hidden');
+      toggleFormlogin.classList.toggle('hidden');
+      toggleFormsignup.classList.toggle('hidden');
     });
+
+    toggleFormsignup.addEventListener('click', function() {
+      loginForm.classList.toggle('hidden');
+      signupForm.classList.toggle('hidden');
+      toggleFormlogin.classList.toggle('hidden');
+      toggleFormsignup.classList.toggle('hidden');
+    });
+  
   
     loginForm.addEventListener('submit', function(event) {
       event.preventDefault();
